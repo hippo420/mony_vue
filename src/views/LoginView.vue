@@ -11,19 +11,24 @@
             <h1 class="login__title">Sign In</h1>
             <div class="login__box">
               <i class='bx bx-user login__icon'></i>
-              <input type="text" placeholder="Username" class="login__input">
+              <input type="text" placeholder="Username" class="login__input" v-model="user_id" required/>
             </div>
             <div class="login__box">
               <i class='bx bx-lock login__icon'></i>
-              <input type="text" placeholder="Password" class="login__input">
+              <input type="Password" placeholder="Password" class="login__input" v-model="user_pwd" required/>
             </div>
             <a href="#" class="login__forgot">Forgot Password? </a>
-            
-            <a href="#" class="login__button">Sign In</a>
+            <div class="login__social">
+              <a href="#" class="login__social--icon"><i class='bx bxl-facebook'></i></a>
+              <a href="#" class="login__social--icon"><i class='bx bxl-twitter'></i></a>
+              <a href="#" class="login__social--icon"><i class='bx bxl-google'></i></a>
+              <a href="#" class="login__social--icon"><i class='bx bxl-github'></i></a>
+            </div>
+            <a href="#" class="login__button" v-on:click="login()">Sign In</a>
             
             <div>
               <span class="login__account login__account--account">Don't Have an Account?</span>
-              <span class="login__signin login__signin--signup" id="sign-up">Sign Up</span>
+              <span class="login__signin login__signin--signup" id="sign-up" @click="getSignUpPage">Sign Up</span>
             </div>
           </form>
           <form action="" class="login__create none" id="login-up">
@@ -40,14 +45,14 @@
             
             <div class="login__box">
               <i class='bx bx-lock login__icon'></i>
-              <input type="text" placeholder="Password" class="login__input">
+              <input type="Password" placeholder="Password" class="login__input">
             </div>
             
             <a href="#" class="login__button">Sign Up</a>
             
             <div>
               <span class="login__account login__account--account">Already have an Account?</span>
-              <span class="login__signup login__signup--signup" id="sign-in">Sign In</span>
+              <span class="login__signup login__signup--signup" id="sign-in" @click="getSignInPage">Sign in</span>
             </div>
             
             <div class="login__social">
@@ -249,26 +254,63 @@ img {
 }
 </style>
 <script>
+import Transaction from '@/common/core/Transaction';
+    
+    //var signup = document.getElementById('sign-in');
+    //var signin = document.getElementById("sign-in");
 
-//var signup = document.getElementById('sign-in');
-//signin = document.getElementById("sign-in");
-//loginin = document.getElementById("login-in");
-//loginup = document.getElementById("login-up");
-/*
-signup.addEventListener("click", () => {
-    loginin.classList.remove("block");
-    loginup.classList.remove("none");
 
-    loginin.classList.add("none");
-    loginup.classList.add("block");
-})
+export default {
 
-signin.addEventListener("click", () => {
-    loginin.classList.remove("none");
-    loginup.classList.remove("block");
 
-    loginin.classList.add("block");
-    loginup.classList.add("none");
-})
-*/
+  data() {
+    return {
+      user_id: null,
+      user_pwd: null,
+      test:null,
+    };
+  },
+  methods :{
+
+    getSignUpPage(){
+      var loginin = document.getElementById("login-in");
+      var loginup = document.getElementById("login-up");
+      loginin.classList.remove("block");
+      loginup.classList.remove("none");
+
+      loginin.classList.add("none");
+      loginup.classList.add("block");
+    },
+
+    getSignInPage(){
+      var loginin = document.getElementById("login-in");
+      var loginup = document.getElementById("login-up");
+      loginin.classList.remove("none");
+      loginup.classList.remove("block");
+
+      loginin.classList.add("block");
+      loginup.classList.add("none");
+    },
+    
+    login(){
+        let loginData ={
+            user_id:this.user_id
+            ,user_pwd: this.user_pwd
+        };
+
+        Transaction.gfnTrx("/login/prcLogin","GET",loginData );
+    },
+
+    signIn(){
+
+    },
+    
+    signUp(){
+
+    }
+
+  }
+}
 </script>
+
+

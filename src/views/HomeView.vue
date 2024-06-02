@@ -1,11 +1,11 @@
 <template>
 <nav>
-  <router-link to="/test">Test</router-link>
+  <router-link to="/login">Login</router-link>
 </nav>
 
 <main>
-  <HelloWorld />
   <RouterView />
+  <HelloWorld />
 </main>
 
 </template>
