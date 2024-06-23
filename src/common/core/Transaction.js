@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export default{
     
-    gfnTrx(url, method, data){
+    gfnTrx(url, method, data,callback){
         let IP;
         let PORT = process.env.VUE_APP_PORT;
         const config = {
@@ -15,11 +15,11 @@ export default{
         };
         
         if (process.env.NODE_ENV == "prod") {
-            IP =process.env.VUE_APP_END_POINT_IP;
+            IP =process.env.prod.VUE_APP_END_POINT_IP;
         }else if(process.env.NODE_ENV == "test"){
             IP =process.env.test.VUE_APP_END_POINT_IP;
         }else{
-            IP =process.env.local.VUE_APP_END_POINT_IP;
+            IP ='127.0.0.1';
         }
         console.log(process.env);
         axios.defaults.baseURL='http://'+IP+':'+PORT;
@@ -28,7 +28,8 @@ export default{
         return axios(config)
             .then(response => {
                 console.log('gfnTrx:', response.data);
-                return response.data;
+                callback(response.data);
+                //return response.data;
             })
             .catch(error => {
                 // 여기에 오류 처리 로직을 추가할 수 있습니다.
