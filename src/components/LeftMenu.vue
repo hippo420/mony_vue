@@ -1,8 +1,8 @@
 <template>
     <div>
     <v-navigation-drawer
-        v-model="drawer" 
-        absolute 
+        v-model="drawer"
+        absolute
         location="left"
 
         width="180">

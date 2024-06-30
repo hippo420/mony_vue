@@ -22,7 +22,6 @@
               <a href="#" class="login__social--icon"><i class='bx bxl-github'></i></a>
             </div>
             <a href="#" class="login__button" v-on:click="login()">Sign In</a>
-            <a href="#" class="login__button"  @click="$store.commit('setName')"></a>
             <div>
               <span class="login__account login__account--account">Don't Have an Account?</span>
               <span class="login__signin login__signin--signup" id="sign-up" @click="getSignUpPage">Sign Up</span>
@@ -32,20 +31,20 @@
             <h1 class="login__title">Create Account</h1>
             <div class="login__box">
               <i class='bx bx-user login__icon'></i>
-              <input type="text" placeholder="Username" class="login__input">
+              <input type="text" placeholder="Username" class="login__input" v-model="userid" required>
             </div>
             
             <div class="login__box">
               <i class='bx bx-at login__icon'></i>
-              <input type="text" placeholder="Email" class="login__input">
+              <input type="text" placeholder="Email" class="login__input" v-model="useremail" required>
             </div>
             
             <div class="login__box">
               <i class='bx bx-lock login__icon'></i>
-              <input type="Password" placeholder="Password" class="login__input">
+              <input type="Password" placeholder="Password" class="login__input" v-model="userpwd" required>
             </div>
             
-            <a href="#" class="login__button">Sign Up</a>
+            <a href="#" class="login__button" v-on:click="regist()" >Sign Up</a>
             
             <div>
               <span class="login__account login__account--account">Already have an Account?</span>
@@ -266,6 +265,7 @@ export default {
     return {
       userid: null,
       userpwd: null,
+      useremail: null,
     };
   },
   methods :{
@@ -297,7 +297,7 @@ export default {
             userpwd: this.userpwd
         };
         
-        Transaction.gfnTrx("/login/prcLogin","POST",member ,this.fnLoginCallback);
+        Transaction.gfnTrx("/member/login","POST",member ,this.fnLoginCallback);
     },
     
     fnLoginCallback(data){
@@ -307,8 +307,14 @@ export default {
       this.$router.push('/');
     },
 
-    signIn(){
-
+    regist(){
+      let member ={
+            userid:  this.userid,
+            userpwd: this.userpwd,
+            useremail: this.useremail
+        };
+        console.log(member);
+        //Transaction.gfnTrx("/member/regist","POST",member ,this.fnRegistCallback);
     },
     
     signUp(){

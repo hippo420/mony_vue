@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <nav>
-      <h1>시벌</h1>
+      
       <router-link to="/login">Login</router-link>
       <router-link to="/menu">menu</router-link>
       
