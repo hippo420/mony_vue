@@ -1,11 +1,6 @@
 <template>
   <div class="container">
-    <nav>
-      
-      <router-link to="/login">Login</router-link>
-      <router-link to="/menu">menu</router-link>
-      
-    </nav>
+    
     
     <main>
       <LeftMenu />

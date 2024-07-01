@@ -50,9 +50,9 @@ export default {
         data() {
             return {
                 menus: [
-                    {id :'Aaaa',targrt:'A',title:'A메뉴'},
-                    {id :'Baaaa',targrt:'B',title:'B메뉴'},
-                    {id :'Caaaa',targrt:'C',title:'C메뉴'},
+                    {id :'Aaaa',target:'A',title:'A메뉴'},
+                    {id :'Baaaa',target:'B',title:'B메뉴'},
+                    {id :'채팅방',target:'C',title:'주식채팅방'},
                 ], // 메뉴 항목을 저장할 배열,
                 drawer: true,
             }
