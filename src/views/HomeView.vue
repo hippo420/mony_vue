@@ -1,10 +1,10 @@
 <template>
   <div class="container">
-    
-    
     <main>
-      <LeftMenu />
-      <HelloWorld />
+      
+      <HeaderView />
+      <MainView/>
+      <FooterView/>
     </main>
   </div>
 </template>
@@ -13,15 +13,17 @@
 import { defineComponent } from 'vue';
 
 // Components
-import HelloWorld from '../components/HelloWorld.vue';
-import LeftMenu from '../components/LeftMenu.vue';
+import HeaderView from './HeaderView.vue';
+import MainView from './MainView.vue';
+import FooterView from './FooterView.vue';
 export default [
   defineComponent({
     name: 'HomeView',
     components: {
-      HelloWorld,
-      LeftMenu
+      HeaderView,
+      MainView,
+      FooterView,
     },
-  })
+  }),
 ];
 </script>

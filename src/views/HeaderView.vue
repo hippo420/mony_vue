@@ -1,28 +1,36 @@
 <template>
-    <header>
+    <div class="container">
         <h1>Mony</h1>
+        <ProfileCard/>
         <nav>
             <router-link to="/login">Login</router-link>
             <router-link to="/menu">menu</router-link>
         </nav>
-    </header>
+    </div>
+    <HelloWorld/>
+    <LeftMenu/>
 </template>
 
 <script>
 import HelloWorld from '../components/HelloWorld.vue';
 import LeftMenu from '../components/LeftMenu.vue';
+import ProfileCard from '../components/Card/ProfileCard.vue';
+import { defineComponent } from 'vue';
 export default [
     defineComponent({
-        name: 'Header',
+        name: 'HeaderView',
         components: {
             HelloWorld,
-            LeftMenu
+            LeftMenu,
+            ProfileCard,
         },
-    })
+    }),
 ];
 </script>
 
 <style scoped>
-/* 스타일 설정 */
+.container {
+    background-color: aquamarine;
+   }
 </style>
 
