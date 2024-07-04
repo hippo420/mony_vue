@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeV from '../components/Home.vue'
 import MenuView from '../components/LeftMenu.vue'
-import MusicPlayer from '../components/MusicPlayer.vue'
 import LoginView from '../views/LoginView.vue'
 
 const routes = [
@@ -26,10 +25,6 @@ const routes = [
     path: '/',
     component: HomeV
   },
-  {
-    path: '/player',
-    component: MusicPlayer
-  }
 ]
 
 const router = createRouter({
