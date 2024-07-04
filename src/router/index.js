@@ -1,14 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import HomeV from '../components/Home.vue'
 import MenuView from '../components/LeftMenu.vue'
-import HomeView from '../views/HomeView.vue'
+import MusicPlayer from '../components/MusicPlayer.vue'
 import LoginView from '../views/LoginView.vue'
 
 const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView
-  },
+  
   {
     path: '/about',
     name: 'about',
@@ -24,6 +21,14 @@ const routes = [
   {
     path: '/menu',
     component: MenuView,
+  },
+  {
+    path: '/',
+    component: HomeV
+  },
+  {
+    path: '/player',
+    component: MusicPlayer
   }
 ]
 
