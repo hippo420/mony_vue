@@ -8,6 +8,7 @@ export default{
         const config = {
             header: {
                 "Context-Type": "application/json",
+                "USER_ID":"gaebabja",
             },
             method,
             url,

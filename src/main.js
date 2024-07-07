@@ -1,4 +1,4 @@
-import store from '@/store/store.js';
+import userStore from '@/store/userStore.js';
 import { createApp } from 'vue';
 import App from './App.vue';
 import vuetify from './plugins/vuetify';
@@ -10,5 +10,5 @@ loadFonts()
 createApp(App)
   .use(router)
   .use(vuetify)
-  .use(store)
+  .use(userStore)
   .mount('#app')

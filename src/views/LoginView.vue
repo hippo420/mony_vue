@@ -302,9 +302,9 @@ export default {
     
     fnLoginCallback(data){
       console.log('setLoginStore -> ')
-      this.$store.commit('setUserData', data);
+      this.$userStore.commit('login', data);
 
-      this.$router.push('/');
+      this.$router.push('main');
     },
 
     regist(){
