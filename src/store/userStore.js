@@ -66,7 +66,11 @@ const userStore = createStore({
                 })
             }
         },
-     
+    },
+    getters:{
+        getUserId(){
+            return this.$userData.state.userid;
+        }
     }
 })
 

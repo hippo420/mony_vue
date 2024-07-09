@@ -1,34 +1,42 @@
+import store from '@/store/store.js';
 import axios from 'axios';
+axios.interceptors.request.use(config => {
+    // Add common headers
+    config.headers['USER_ID'] = store.state.userData.userid;
+    config.headers['Content-Type'] = 'application/json';
+    console.log(config);
+    // Return the modified config
+    return config;
+}, error => {
+    // Handle request errors here
+    return Promise.reject(error);
+});
 
 export default{
     
-    gfnTrx(url, method, data,callback){
+    gfnTrx(url, method, data,callback,){
         let IP;
         let PORT = process.env.VUE_APP_PORT;
         const config = {
-            header: {
-                "Context-Type": "application/json",
-                "USER_ID":"gaebabja",
-            },
             method,
             url,
             data,
         };
-        
         if (process.env.NODE_ENV == "prod") {
             IP =process.env.prod.VUE_APP_END_POINT_IP;
         }else if(process.env.NODE_ENV == "test"){
             IP =process.env.test.VUE_APP_END_POINT_IP;
         }else{
-            IP ='127.0.0.1';
+            IP ='localhost';
         }
-        console.log(process.env);
+        //console.log(process.env);
         axios.defaults.baseURL='http://'+IP+':'+PORT;
-
+        console.log('http://'+IP+':'+PORT);
         //axios로부터 반환되는 프로미스를 반환하도록 변경
         return axios(config)
             .then(response => {
                 console.log('gfnTrx:', response.data);
+                
                 callback(response.data);
                 //return response.data;
             })
