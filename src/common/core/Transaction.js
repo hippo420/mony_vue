@@ -4,7 +4,8 @@ axios.interceptors.request.use(config => {
     // Add common headers
     config.headers['USER_ID'] = store.state.userData.userid;
     config.headers['Content-Type'] = 'application/json';
-    console.log(config);
+    config.headers['Access-Control-Allow-Origin'] = '*';
+    console.log(config.headers);
     // Return the modified config
     return config;
 }, error => {
