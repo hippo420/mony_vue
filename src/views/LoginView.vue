@@ -297,7 +297,7 @@ export default {
             userpwd: this.userpwd
         };
         
-        Transaction.gfnTrx("/member/login","POST",member ,this.fnLoginCallback);
+        Transaction.gfnTrx("/api/member/login","POST",member ,this.fnLoginCallback);
     },
     
     fnLoginCallback(data){

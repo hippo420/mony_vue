@@ -4,7 +4,6 @@ axios.interceptors.request.use(config => {
     // Add common headers
     config.headers['USER_ID'] = store.state.userData.userid;
     config.headers['Content-Type'] = 'application/json';
-    config.headers['Access-Control-Allow-Origin'] = '*';
     console.log(config.headers);
     // Return the modified config
     return config;
@@ -18,10 +17,17 @@ export default{
     gfnTrx(url, method, data,callback,){
         let IP;
         let PORT = process.env.VUE_APP_PORT;
+        let isAllCookie = true;
+
+        if(url == "/api/member/login"){
+            isAllCookie=false;
+        }
+        console.log('isAllCookie : ',isAllCookie);
         const config = {
             method,
             url,
             data,
+            withCredentials: isAllCookie, // 요청에 쿠키 포함
         };
         if (process.env.NODE_ENV == "prod") {
             IP =process.env.prod.VUE_APP_END_POINT_IP;

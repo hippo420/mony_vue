@@ -1,7 +1,7 @@
 <template>
     <main class="main">
     <router-view></router-view>
-    <button class="login__signup login__signup--signup" id="sign-in" @click="getStocInfo">Sign in</button>
+    <button id="sign-in" @click="getStocInfo">Sign in</button>
     </main>
 </template>
 
@@ -12,12 +12,12 @@ export default {
   methods :{
 
     getStocInfo(){
-      Transaction.gfnTrx("/stock/find","GET",null ,this.fnCallback);
-  },
-  fnCallback(data){
-    console.log(data)
+      Transaction.gfnTrx("/api/stock/find","GET",null ,this.fnCallback);
+    },
+    fnCallback(data){
+      console.log(data)
+    }
   }
-}
 }
 </script>
 
