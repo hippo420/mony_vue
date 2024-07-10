@@ -1,5 +1,6 @@
 import store from '@/store/store.js';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 axios.interceptors.request.use(config => {
     // Add common headers
     config.headers['USER_ID'] = store.state.userData.userid;
@@ -43,7 +44,7 @@ export default{
         return axios(config)
             .then(response => {
                 console.log('gfnTrx:', response.data);
-                
+                Cookies.set('JSESSIONID', 'aaaaaaaa', { expires: 1 });
                 callback(response.data);
                 //return response.data;
             })
