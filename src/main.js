@@ -1,4 +1,5 @@
 import { createApp } from 'vue';
+import cookie from 'vue-cookies';
 import App from './App.vue';
 import vuetify from './plugins/vuetify';
 import { loadFonts } from './plugins/webfontloader';
@@ -11,4 +12,5 @@ createApp(App)
   .use(router)
   .use(vuetify)
   .use(store)
+  .use(cookie)
   .mount('#app')
