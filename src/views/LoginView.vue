@@ -38,6 +38,16 @@
               <i class='bx bx-at login__icon'></i>
               <input type="text" placeholder="Email" class="login__input" v-model="useremail" required>
             </div>
+
+            <div class="login__box">
+              <i class='bx'></i>
+              <input type="text" placeholder="NickName" class="login__input" v-model="nickname" >
+            </div>
+
+            <div class="login__box">
+              <i class='bx'></i>
+              <input type="text" placeholder="UserName" class="login__input" v-model="username" >
+            </div>
             
             <div class="login__box">
               <i class='bx bx-lock login__icon'></i>
@@ -266,6 +276,8 @@ export default {
       userid: null,
       userpwd: null,
       useremail: null,
+      nickname: null,
+      username: null,
     };
   },
   methods :{
@@ -282,6 +294,7 @@ export default {
 
     
     getSignInPage(){
+      console.log('getSignInPage');
       var loginin = document.getElementById("login-in");
       var loginup = document.getElementById("login-up");
       loginin.classList.remove("none");
@@ -311,16 +324,27 @@ export default {
       let member ={
             userid:  this.userid,
             userpwd: this.userpwd,
-            useremail: this.useremail
+            useremail: this.useremail,
+            nickname: this.nickname,
+            username: this.username
         };
         console.log(member);
-        //Transaction.gfnTrx("/member/regist","POST",member ,this.fnRegistCallback);
+        Transaction.gfnTrx("/api/member/regist","POST",member ,this.fnRegistCallback);
     },
     
-    signUp(){
-
+    fnRegistCallback(data){
+      console.log(data);
+      this.initData();
+      this.getSignInPage();
     },
 
+    initData(){
+      this.userid    = null;
+      this.userpwd   = null;
+      this.useremail = null;
+      this.nickname  = null;
+      this.username  = null;
+    }
     
 
   }
