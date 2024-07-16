@@ -41,10 +41,16 @@ const gfnTrx = async (url, method, data, callback) => {
         if (!response.ok) {
             throw new Error(`API Error: ${response.statusText}`);
         }
+        
         const responseData = await response.json();
+        console.log(responseData.data.status );
+        if(responseData.data.status != response.ok && responseData.data.status!= null){
+            alert(responseData.data.message);
+        }
+
         console.log('gfnTrx:', responseData);
         //cookie.set('JSESSIONID', 'aaaaaa', 1);
-        callback(responseData);
+        callback(responseData.data);
     } catch (error) {
         console.error('API Error:', error);
         // Add additional error handling logic here if needed

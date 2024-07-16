@@ -2,6 +2,10 @@
     <main class="main">
     <router-view></router-view>
     <button id="sign-in" @click="getStocInfo">Sign in</button>
+    <tr></tr>
+    <button id="error" @click="getError">ERROR</button>
+    <tr></tr>
+    <button id="error" @click="getLogin">Login</button>
     </main>
 </template>
 
@@ -16,6 +20,12 @@ export default {
     },
     fnCallback(data){
       console.log(data)
+    },
+    getError(){
+      Transaction.gfnTrx("/api/stock/error","GET",null ,this.fnCallback);
+    },
+    getLogin(){
+      this.$router.push("/login");
     }
   }
 }

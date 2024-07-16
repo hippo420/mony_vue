@@ -314,7 +314,7 @@ export default {
     },
     
     fnLoginCallback(data){
-      console.log('setLoginStore -> ')
+      console.log('setLoginStore -> ',data);
       this.$store.commit('login', data);
       
       this.$router.push('main');
