@@ -13,11 +13,13 @@ name: 'HomeV'
 
 <style scoped>
 .home {
-padding: 20px;
+padding: 1px;
+flex: 1;
+background-color: #5fced0;
+
 }
 
 h2 {
-color: #2cc01f;
+color: #4f8cc6;
 }
 </style>
-  

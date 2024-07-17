@@ -280,6 +280,11 @@ export default {
       username: null,
     };
   },
+  created() {
+    if(this.$store.getters.loginCheck){
+      this.$router.push('/main');
+    }
+  },
   methods :{
 
     getSignUpPage(){

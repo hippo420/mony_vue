@@ -2,30 +2,7 @@
 import { createStore } from 'vuex';
 
 const userStore = createStore({
-    // state() {
-    //     return {
-    //         userid: '',
-    //         username: '',
-    //         nickname: '',
-    //         userrole: ''
-    //     };
-    // },
-    // mutations: {
-    //     setUserId(state, data) {
-    //         state.userid = data;
-    //     },
-    //     setUserName(state, data) {
-    //         state.username = data;
-    //     },
-    //     setUserNickName(state, data) {
-    //         state.nickname = data;
-    //     },
-    //     setUserRole(state, data) {
-    //         state.userrole = data;
-    //     }
-    // },
-    // actions: {},
-    // getters: {}
+
 
     state(){
         return {

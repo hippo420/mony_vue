@@ -6,6 +6,8 @@
     <button id="error" @click="getError">ERROR</button>
     <tr></tr>
     <button id="error" @click="getLogin">Login</button>
+    <tr></tr>
+    <button id="logout" @click="getLogout">logout</button>
     </main>
 </template>
 
@@ -18,14 +20,20 @@ export default {
     getStocInfo(){
       Transaction.gfnTrx("/api/stock/find","GET",null ,this.fnCallback);
     },
+    fnLogoutCallback(){
+      this.$store.commit('logout');
+    },
     fnCallback(data){
-      console.log(data)
+      console.log(data);
     },
     getError(){
       Transaction.gfnTrx("/api/stock/error","GET",null ,this.fnCallback);
     },
     getLogin(){
       this.$router.push("/login");
+    },
+    getLogout(){
+      Transaction.gfnTrx("/api/member/logout","GET",null ,this.fnLogoutCallback);
     }
   }
 }
@@ -35,6 +43,6 @@ export default {
 .main {
   flex: 1;
   padding: 20px;
-  background-color: #ffffff;
+  background-color: #d05f5f;
 }
 </style>

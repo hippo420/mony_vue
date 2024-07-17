@@ -3,7 +3,7 @@
     <LeftMenu/>
     </div>
 
-  </template> 
+  </template>
   
   <script>
 import { defineComponent } from 'vue';
@@ -20,7 +20,7 @@ import LeftMenu from '../components/LeftMenu.vue';
   
   <style scoped>
   .container {
-    width: 200px;
+    max-width: 250px;
     background-color: #4ba46d;
     padding: 20px;
   }

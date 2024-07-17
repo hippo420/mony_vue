@@ -35,7 +35,15 @@ const store = createStore({
                 nickname: '',
                 userrole: '',
                 token:'',
-            }
+            },loginStatus:false
+        }
+    },
+    getters:{
+        getUserId:state => {
+            return state.userData.userid;
+        },
+        loginCheck:state => {
+            return state.loginStatus
         }
     },
     mutations: {
@@ -45,20 +53,13 @@ const store = createStore({
             state.userData.nickname = data.nickname;
             state.userData.userrole = data.userrole;
             state.userData.token = data.userrole;
+            state.loginStatus=true;
         },
-        loginCheck(state){
-            if(!state.token){
-                this.$router.push({
-                    name: 'login'
-                }).catch(error => {
-                    console.log(error)
-                })
-            }
-        },
-        loginOut(state){
-            if(state.token){
+        logout(state){
+            if(state.userData.token){
                 state=null;
                 alert("로그아웃 되었습니다.");
+                state.loginStatus=false;
                 this.$router.push({
                     name: 'login'
                 }).catch(error => {
@@ -66,12 +67,9 @@ const store = createStore({
                 })
             }
         },
+        
     },
-    getters:{
-        getUserId(){
-            return this.$userData.state.userid;
-        }
-    }
+    
 })
 
 export default store;
