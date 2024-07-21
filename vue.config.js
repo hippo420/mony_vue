@@ -8,13 +8,15 @@ module.exports = defineConfig({
 		}
   },
 
+
+  
   devServer: {
     proxy : {
       '/api': {
-        target: 'http://localhost:2181',
+        target: 'http://'+process.env.VUE_APP_API_URL+':2181',
         changeOrigin: true,
         pathRewrite: { '^/api': '' },
       },
-   },
+    },
   },
 })
