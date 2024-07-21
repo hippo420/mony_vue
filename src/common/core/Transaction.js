@@ -16,14 +16,16 @@ const gfnTrx = async (url, method, data, callback) => {
         isAllCookie = false;
     }
     console.log('isAllCookie : ', isAllCookie);
-
+    
     if (process.env.NODE_ENV === "prod") {
-        IP = process.env.prod.VUE_APP_END_POINT_IP;
+        
+        IP = process.env.VUE_APP_END_POINT_IP;
     } else if (process.env.NODE_ENV === "test") {
         IP = process.env.test.VUE_APP_END_POINT_IP;
     } else {
         IP = 'localhost';
     }
+
 
     const fullUrl = `http://${IP}:${PORT}${url}`;
     console.log(fullUrl);
