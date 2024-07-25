@@ -15,7 +15,6 @@ const gfnTrx = async (url, method, data, callback) => {
     if (url === "/api/member/login") {
         isAllCookie = false;
     }
-    console.log('isAllCookie : ', isAllCookie);
     
     if (process.env.NODE_ENV === "prod") {
         
