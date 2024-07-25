@@ -11,11 +11,6 @@ const gfnTrx = async (url, method, data, callback) => {
     let IP;
     const PORT = process.env.VUE_APP_PORT;
     
-
-    if (url === "/api/member/login") {
-        isAllCookie = false;
-    }
-    
     if (process.env.NODE_ENV === "prod") {
         
         IP = process.env.VUE_APP_END_POINT_IP;
