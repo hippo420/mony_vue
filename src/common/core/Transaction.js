@@ -10,7 +10,7 @@ const getHeaders = () => {
 const gfnTrx = async (url, method, data, callback) => {
     let IP;
     const PORT = process.env.VUE_APP_PORT;
-    let isAllCookie = true;
+    
 
     if (url === "/api/member/login") {
         isAllCookie = false;
